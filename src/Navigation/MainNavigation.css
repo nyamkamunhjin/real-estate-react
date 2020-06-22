@@ -1,0 +1,34 @@
+div {
+  overflow: auto;
+}
+
+.main-nav {
+  background-color: cornflowerblue;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.main-nav li {
+  margin: 0 0.5rem;
+  /* height: 50px; */
+  padding: .3em;
+  background-color: blueviolet;
+  border-radius: 5px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  font: inherit;
+}
