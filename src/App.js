@@ -1,15 +1,24 @@
-import React from 'react';
-import './App.css';
-import MainNavigation from './Navigation/MainNavigation';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import "./App.css";
+import MainNavigation from "./navigation/MainNavigation";
+import { BrowserRouter, Redirect, Switch, Route } from "react-router-dom";
+import Buy from "./pages/buy/Buy.js";
 
 function App() {
   return (
-    <div className="App">
+    <React.Fragment>
       <BrowserRouter>
         <MainNavigation />
+        <div className="App">
+          <Redirect from="/" to="/buy" />
+          <Switch>
+            <Route path="/buy" component={Buy} />
+            <Route path="/rent" />
+          </Switch>
+          {/* <Buy /> */}
+        </div>
       </BrowserRouter>
-    </div>
+    </React.Fragment>
   );
 }
 

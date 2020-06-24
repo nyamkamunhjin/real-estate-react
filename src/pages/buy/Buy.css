@@ -1,0 +1,14 @@
+.buy-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  /* margin: .1em; */
+}
+
+.buy-container > div {
+  margin: .1em;
+  height: 93vh;
+}
+
+.map {
+  background-color: teal;
+}

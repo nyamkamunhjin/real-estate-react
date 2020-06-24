@@ -1,0 +1,12 @@
+.card {
+  background-color: violet;
+  height: (width / (16/9))px;
+  margin: .3em;
+  padding: .5em;
+}
+
+.card img {
+  /* padding: -1em; */
+  max-width: 100%;
+  height: auto;
+}

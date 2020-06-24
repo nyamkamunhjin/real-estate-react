@@ -1,34 +1,33 @@
-div {
-  overflow: auto;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .main-nav {
   background-color: cornflowerblue;
+  padding: 0.5em;
 }
 
 .main-nav ul {
   display: flex;
+  justify-content: flex-start;
   list-style: none;
-  padding: 0;
-  margin: 0;
-  align-items: center;
+  /* padding: 0; */
+  margin-left: 1em;
+  /* align-items: center; */
 }
 
 .main-nav li {
   margin: 0 0.5rem;
   /* height: 50px; */
-  padding: .3em;
+  padding: 0.3em;
   background-color: blueviolet;
   border-radius: 5px;
 }
 
-.main-nav a {
+a {
   text-decoration: none;
-  color: #fff;
-  border-radius: 5px;
-  padding: 0.5rem;
-  background: transparent;
-  cursor: pointer;
-  border: none;
-  font: inherit;
+  color: white;
+  padding: 0.5em;
 }

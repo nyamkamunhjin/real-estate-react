@@ -1,0 +1,7 @@
+.grid-view {
+  background-color: tan;
+  overflow: auto;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
