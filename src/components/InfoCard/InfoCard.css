@@ -1,12 +1,71 @@
 .card {
+  width: 305px;
   background-color: violet;
-  height: (width / (16/9))px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 200px;
   margin: .3em;
-  padding: .5em;
+  display: grid;
+  grid-template-rows: 140px 30px 30px;
+  grid-template-areas:  "top"
+                        "info"
+                        "footer";
+}
+
+.card-top {
+  background-color: yellowgreen;
+  grid-area: top;
+  overflow: hidden;
+}
+
+.card-info {
+  grid-area: info;
+  background-color: tomato;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "price details";
+  padding: 0 .3em;
+}
+
+.card-info > div {
+  margin: auto 0;
+}
+
+.card-info-price {
+  grid-area: price;
+  text-align: start;
+}
+
+.card-info-details {
+  grid-area: details;
+  text-align: end;
+  font-size: 13px;
+}
+
+.card-footer {
+  display: grid;
+  grid-area: footer;
+  background-color: aquamarine;
+  /* padding: .3em; */
+  /* align-items: center; */
+  /* margin: 0 auto; */
+
+}
+
+.address {
+  font-size: 14px;
+  text-align: start;
+  margin: auto 0;
+  padding: 0 .3em;
+
+}
+
+.card p {
+  font-size: 12px;
 }
 
 .card img {
-  /* padding: -1em; */
+  margin: 0;
   max-width: 100%;
   height: auto;
 }

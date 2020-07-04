@@ -1,7 +1,12 @@
 .grid-view {
-  background-color: tan;
+  position: relative;
+  margin-left: .5;
+  flex-grow: 1;
   overflow: auto;
   overflow-x: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  height: 90vh;
 }

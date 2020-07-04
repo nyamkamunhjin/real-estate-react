@@ -4,10 +4,12 @@ import InfoCard from '../InfoCard/InfoCard';
 import './GridView.css';
 
 export default function GridView(props) {
-  const infos = props.info.infos;
+  const infos = props.info;
   return (
-    <div className='grid-view'>
-      { infos.map(info => <InfoCard info={info} />) }
-    </div>
-  )
+    <ul className="grid-view">
+      {infos.map((info) => (
+        <InfoCard info={info} key={info.desc} />
+      ))}
+    </ul>
+  );
 }

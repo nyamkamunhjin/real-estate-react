@@ -1,14 +1,14 @@
-import React from "react";
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
+import React, { useState, useEffect } from 'react';
+import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import axios from 'axios';
+import GridView from '../../components/GridView/GridView';
+import './Buy.css';
+import data from '../../fakeData.json';
 
-import GridView from "../../components/GridView/GridView";
-import "./Buy.css";
-import data from "../../fakeData.json";
-
-const libraries = ["places"];
+const libraries = ['places'];
 const mapContainerStyle = {
-  width: "100%",
-  height: "100%",
+  width: '100%',
+  height: '100%',
 };
 const center = {
   lat: 47.918729,
@@ -21,8 +21,21 @@ export default function Buy() {
     libraries,
   });
 
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading maps";
+  const [properties, setProperties] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        'https://us-central1-real-estate-281401.cloudfunctions.net/app/api/properties'
+      );
+      setProperties(result.data);
+    };
+
+    fetchData();
+  }, []);
+
+  if (loadError) return 'Error loading maps';
+  if (!isLoaded) return 'Loading maps';
 
   return (
     <div className="buy-container">
@@ -34,7 +47,7 @@ export default function Buy() {
           center={center}
         ></GoogleMap>
       </div>
-      <GridView info={data} />
+      <GridView info={properties} />
     </div>
   );
 }
