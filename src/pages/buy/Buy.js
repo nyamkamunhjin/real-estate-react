@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from '@react-google-maps/api';
 import axios from 'axios';
 import GridView from '../../components/GridView/GridView';
+import Backdrop from '../../components/Backdrop/Backdrop';
+import Modal from '../../components/Modal/Modal';
+
 import './Buy.css';
 import data from '../../fakeData.json';
+import mapStyles from './mapStyles';
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -14,6 +23,11 @@ const center = {
   lat: 47.918729,
   lng: 106.917653,
 };
+const options = {
+  // styles: mapStyles,
+  disableDefaultUI: true,
+  zoomControl: true,
+};
 
 export default function Buy() {
   const { isLoaded, loadError } = useLoadScript({
@@ -22,6 +36,7 @@ export default function Buy() {
   });
 
   const [properties, setProperties] = useState([]);
+  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,9 +44,15 @@ export default function Buy() {
         'https://us-central1-real-estate-281401.cloudfunctions.net/app/api/properties'
       );
       setProperties(result.data);
+      setSelected(result.data[0]);
     };
 
     fetchData();
+  }, []);
+
+  const mapRef = React.useRef();
+  const onMapLoad = React.useCallback((map) => {
+    mapRef.current = map;
   }, []);
 
   if (loadError) return 'Error loading maps';
@@ -45,9 +66,34 @@ export default function Buy() {
           mapContainerStyle={mapContainerStyle}
           zoom={14}
           center={center}
-        ></GoogleMap>
+          options={options}
+          onload={onMapLoad}
+        >
+          {properties.map((prop) => (
+            <Marker
+              key={prop.id}
+              position={prop.location}
+              icon={{
+                url: '/green_dot.svg',
+                scaledSize: new window.google.maps.Size(50, 50),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(25, 25),
+              }}
+              onClick={() => {
+                setSelected(prop);
+                console.log(selected);
+              }}
+            />
+          ))}
+        </GoogleMap>
       </div>
       <GridView info={properties} />
+      {selected ? (
+            <React.Fragment>
+              <Backdrop />
+              <Modal info={selected} />
+            </React.Fragment>
+          ) : null}
     </div>
   );
 }

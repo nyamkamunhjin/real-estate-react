@@ -13,3 +13,13 @@
 .map {
   background-color: teal;
 }
+
+.map h2 {
+  position: absolute;
+  z-index: 10;
+  margin: .4rem;
+  /* top: 1rem; */
+  /* left: 1rem; */
+  /* margin: 0; */
+  /* padding: 0; */
+}
