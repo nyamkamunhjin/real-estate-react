@@ -44,7 +44,7 @@ export default function Buy() {
         'https://us-central1-real-estate-281401.cloudfunctions.net/app/api/properties'
       );
       setProperties(result.data);
-      setSelected(result.data[0]);
+      // setSelected(result.data[0]);
     };
 
     fetchData();

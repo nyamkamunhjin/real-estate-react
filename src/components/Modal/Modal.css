@@ -6,31 +6,40 @@
   position: fixed;
   top: 10vh;
   left: 5%;
-}
-
-.modal__top {
-  overflow: hidden;
+  
 }
 
 .modal__header {
+  height: 40%;
+  overflow: hidden;
+}
+
+.modal__section {
+  height: auto;
+  /* display: inline; */
+}
+
+.modal__features {
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  list-style: none;
   padding: .5rem;
-  background: #5101d1;
-  color: white;
 }
 
-.modal__header h1 {
-  margin: 0;
-  font-size: 1.25rem;
+.modal__features li {
+  text-align: start;
+  padding: .3rem .5rem;
 }
 
-.modal__content {
-  padding: 1rem;
+.modal__article {
+  font-size: 18px;
+  padding: 0 1rem;
+  text-align: justify;
 }
 
-.modal__actions {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1rem;
+.modal__header img {
+  width: 100%;
 }
 
 @media (min-width: 768px) {
