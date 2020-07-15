@@ -1,6 +1,6 @@
 .grid-view {
   position: relative;
-  margin-left: .5;
+  margin-left: .3rem;
   flex-grow: 1;
   overflow: auto;
   overflow-x: hidden;

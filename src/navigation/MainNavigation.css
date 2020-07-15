@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .main-nav {
   background-color: #5101d1;
   padding: 0.5em;
+  box-shadow: 0 4px 2px -2px gray;
 }
 
 .main-nav ul {
@@ -22,12 +26,20 @@
   margin: 0 0.5rem;
   /* height: 50px; */
   padding: 0.3em;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
   border-radius: 5px;
+
 }
+
+
 
 a {
   text-decoration: none;
   color: white;
+  transition: 0.3s;
   padding: 0.5em;
+}
+
+a:hover {
+  color:gray;
 }

@@ -1,11 +1,9 @@
 import React from 'react';
-import logo from '../../logo.svg';
-
 import './InfoCard.css';
 
 export default function InfoCard(props) {
   return (
-    <li className="card">
+    <li className="card" onClick={props.onClick}>
       <div className="card-top">
         <img src={props.info.imgUrl} alt="logo" />
       </div>

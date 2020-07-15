@@ -3,7 +3,6 @@ import {
   GoogleMap,
   useLoadScript,
   Marker,
-  InfoWindow,
 } from '@react-google-maps/api';
 import axios from 'axios';
 import GridView from '../../components/GridView/GridView';
@@ -11,7 +10,7 @@ import Backdrop from '../../components/Backdrop/Backdrop';
 import Modal from '../../components/Modal/Modal';
 
 import './Buy.css';
-import data from '../../fakeData.json';
+// import data from '../../fakeData.json';
 import mapStyles from './mapStyles';
 
 const libraries = ['places'];
@@ -38,13 +37,20 @@ export default function Buy() {
   const [properties, setProperties] = useState([]);
   const [selected, setSelected] = useState(null);
 
+  const exitSelected = () => {
+    setSelected(null);
+  }
+
+  const handleSelected = (info) => {
+    setSelected(info);
+  }
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
         'https://us-central1-real-estate-281401.cloudfunctions.net/app/api/properties'
       );
       setProperties(result.data);
-      // setSelected(result.data[0]);
+      setSelected(result.data[0]);
     };
 
     fetchData();
@@ -87,10 +93,10 @@ export default function Buy() {
           ))}
         </GoogleMap>
       </div>
-      <GridView info={properties} />
-      {selected ? (
+      <GridView info={properties} handleSelected={handleSelected}/>
+      {selected ? ( 
             <React.Fragment>
-              <Backdrop />
+              <Backdrop exit={exitSelected}/>
               <Modal info={selected} />
             </React.Fragment>
           ) : null}

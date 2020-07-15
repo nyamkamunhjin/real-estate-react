@@ -1,3 +1,7 @@
+h4 {
+  text-align: start;
+}
+
 .modal {
   width: 90%;
   height: 80vh !important;
@@ -6,6 +10,7 @@
   position: fixed;
   top: 10vh;
   left: 5%;
+  text-align: start;
   
 }
 
@@ -16,25 +21,28 @@
 
 .modal__section {
   height: auto;
+  margin: .5rem;
   /* display: inline; */
 }
 
 .modal__features {
-  font-size: 20px;
+  /* font-size: 16px; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   list-style: none;
-  padding: .5rem;
+  /* padding: .5rem; */
 }
 
-.modal__features li {
-  text-align: start;
-  padding: .3rem .5rem;
+modal__features li {
+  /* text-align: start; */
+  padding: .2rem .3rem;
 }
+
 
 .modal__article {
-  font-size: 18px;
-  padding: 0 1rem;
+  /* font-size: 18px; */
+  padding: .4rem .3rem;
+  margin-top: .4rem;
   text-align: justify;
 }
 

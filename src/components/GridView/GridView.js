@@ -8,7 +8,11 @@ export default function GridView(props) {
   return (
     <ul className="grid-view">
       {infos.map((info) => (
-        <InfoCard info={info} key={info.desc} />
+        <InfoCard
+          info={info}
+          key={info.id}
+          onClick={() => props.handleSelected(info)}
+        />
       ))}
     </ul>
   );

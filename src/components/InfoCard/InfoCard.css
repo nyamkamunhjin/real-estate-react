@@ -1,15 +1,23 @@
 .card {
   width: 305px;
-  background-color: violet;
+  /* background-color: violet; */
   overflow: hidden;
   text-overflow: ellipsis;
   height: 200px;
-  margin: .3em;
+  margin: .3rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
   display: grid;
   grid-template-rows: 140px 30px 30px;
   grid-template-areas:  "top"
                         "info"
                         "footer";
+
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  transform: scale(1.01);
 }
 
 .card-top {
