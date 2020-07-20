@@ -8,22 +8,37 @@ const Modal = (props) => (
       <img src={props.info.imgUrl} alt="top" />
     </header>
     <section className="modal__section">
-      <h4>Property description</h4>
-      location: {props.info.address}
-      <ul className="modal__features">
-        {Object.entries(props.info.room).map((key) => (
-          <li key={props.info.id + key[0]}>{`${key[0]}: ${key[1]}`}</li>
-        ))}
-      </ul>
+      <h4>Property description:</h4>
+      <br />
+      <div className="modal__features">
+        <b>location:</b> {props.info.address}
+        <ul>
+          {Object.entries(props.info.room).map((key) => (
+            <li key={props.info.id + key[0]}>
+              <b>{key[0]}</b>: {key[1]}
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <article className="modal__article">
         <p>{props.info.desc}</p>
       </article>
-      <h4>Pricing/Rent</h4>
-      <ul className="modal__pricing">
-        <li><b>{props.info.priceFull}$</b></li>
-      </ul>
+      <br />
+      <h4>Pricing/Rent:</h4>
+      <br />
+      <div className="modal__pricing">
+        <ul>
+          <li>
+            <b>{props.info.priceRent}$</b>
+          </li>
+        </ul>
+      </div>
       {}
     </section>
+    <footer className="modal__footer">
+      <button className='btn'>Save</button>
+    </footer>
   </div>
 );
 

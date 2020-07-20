@@ -12,8 +12,8 @@ class MainNavigation extends Component {
       <header>
         <nav className='main-nav'>
           <ul>
-            <li><NavLink to='/buy'>Buy</NavLink></li>
             <li><NavLink to='/rent'>Rent</NavLink></li>
+            <li><NavLink to='/add'>Add</NavLink></li>
           </ul>
         </nav>
       </header>

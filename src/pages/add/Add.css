@@ -1,0 +1,36 @@
+.add {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  margin: 0.1em;
+}
+
+.add > div {
+  height: 90vh;
+  margin: 0.5rem;
+  border-radius: 5px;
+}
+
+.add-form {
+  background-color: grey;
+  color: white;
+  padding: 1rem;
+}
+
+.form-control .coordinate {
+  /* display: block; */
+}
+
+.coordinate {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 50%;
+  margin: auto;
+  justify-items: start;
+
+}
+
+.coordinate input {
+  width: 50%;
+  /* margin: .1rem; */
+}

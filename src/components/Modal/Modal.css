@@ -3,6 +3,7 @@ h4 {
 }
 
 .modal {
+  position: relative;
   width: 90%;
   height: 80vh !important;
   background: white;
@@ -11,6 +12,7 @@ h4 {
   top: 10vh;
   left: 5%;
   text-align: start;
+  margin: .3rem;
   
 }
 
@@ -19,23 +21,33 @@ h4 {
   overflow: hidden;
 }
 
+.modal__header img {
+  width: 100%;
+}
+
 .modal__section {
   height: auto;
   margin: .5rem;
+  padding-bottom: 2.5rem;
   /* display: inline; */
 }
 
-.modal__features {
+.modal__features, .modal__pricing {
+  margin-left: .3rem;
+}
+
+.modal__features ul {
   /* font-size: 16px; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   list-style: none;
+  
   /* padding: .5rem; */
 }
 
-modal__features li {
+.modal__features li {
   /* text-align: start; */
-  padding: .2rem .3rem;
+  padding: .1rem 0;
 }
 
 
@@ -46,8 +58,16 @@ modal__features li {
   text-align: justify;
 }
 
-.modal__header img {
+.modal__footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
+  height: 2.5rem;
+}
+
+.modal__footer button {
+  float: right;
+  /* margin:; */
 }
 
 @media (min-width: 768px) {

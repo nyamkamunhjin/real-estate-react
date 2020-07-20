@@ -1,8 +1,9 @@
-import React from "react";
-import "./App.css";
-import MainNavigation from "./navigation/MainNavigation";
-import { BrowserRouter, Redirect, Switch, Route } from "react-router-dom";
-import Buy from "./pages/buy/Buy.js";
+import React from 'react';
+import './App.css';
+import MainNavigation from './navigation/MainNavigation';
+import { BrowserRouter, Redirect, Switch, Route } from 'react-router-dom';
+import Buy from './pages/buy/Buy.js';
+import Add from './pages/add/Add.js';
 
 function App() {
   return (
@@ -10,10 +11,10 @@ function App() {
       <BrowserRouter>
         <MainNavigation />
         <div className="App">
-          <Redirect from="/" to="/buy" />
+          <Redirect from="/" to="/add" />
           <Switch>
-            <Route path="/buy" component={Buy} />
-            <Route path="/rent" />
+            <Route path="/rent" component={Buy}/>
+            <Route path="/add" component={Add} />
           </Switch>
           {/* <Buy /> */}
         </div>

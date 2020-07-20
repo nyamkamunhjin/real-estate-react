@@ -11,7 +11,7 @@ import Modal from '../../components/Modal/Modal';
 
 import './Buy.css';
 // import data from '../../fakeData.json';
-import mapStyles from './mapStyles';
+import mapStyles from '../../mapStyles';
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -50,7 +50,7 @@ export default function Buy() {
         'https://us-central1-real-estate-281401.cloudfunctions.net/app/api/properties'
       );
       setProperties(result.data);
-      setSelected(result.data[0]);
+      // setSelected(result.data[0]);
     };
 
     fetchData();
@@ -70,7 +70,7 @@ export default function Buy() {
         <h2>Maps</h2>
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
-          zoom={14}
+          zoom={10}
           center={center}
           options={options}
           onload={onMapLoad}
