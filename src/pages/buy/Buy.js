@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-} from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import axios from 'axios';
 import GridView from '../../components/GridView/GridView';
 import Backdrop from '../../components/Backdrop/Backdrop';
@@ -39,15 +35,17 @@ export default function Buy() {
 
   const exitSelected = () => {
     setSelected(null);
-  }
+  };
 
   const handleSelected = (info) => {
     setSelected(info);
-  }
+  };
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        'https://us-central1-real-estate-281401.cloudfunctions.net/app/api/properties'
+        `${
+          process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_LOCAL_URL
+        }/api/properties` 
       );
       setProperties(result.data);
       // setSelected(result.data[0]);
@@ -93,13 +91,17 @@ export default function Buy() {
           ))}
         </GoogleMap>
       </div>
-      <GridView info={properties} handleSelected={handleSelected}/>
-      {selected ? ( 
-            <React.Fragment>
-              <Backdrop exit={exitSelected}/>
-              <Modal info={selected} />
-            </React.Fragment>
-          ) : null}
+      {properties.length !== 0 ? (
+        <GridView info={properties} handleSelected={handleSelected} />
+      ) : (
+        <h2>Loading...</h2>
+      )}
+      {selected ? (
+        <React.Fragment>
+          <Backdrop exit={exitSelected} />
+          <Modal info={selected} />
+        </React.Fragment>
+      ) : null}
     </div>
   );
 }

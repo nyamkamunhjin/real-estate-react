@@ -69,7 +69,7 @@ export default function Add() {
     console.log(data);
     await axios
       .post(
-        'https://us-central1-real-estate-281401.cloudfunctions.net/app/api/add',
+        `${process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_LOCAL_URL}/api/add`,
         data
       )
       .then((res) => {
