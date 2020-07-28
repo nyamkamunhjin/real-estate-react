@@ -3,7 +3,7 @@ import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import axios from 'axios';
 import './Add.css';
 
-import mapStyles from '../../mapStyles';
+// import mapStyles from '../../mapStyles';
 
 const libraries = ['places'];
 const mapContainerStyle = {

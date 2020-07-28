@@ -7,6 +7,11 @@ class MainNavigation extends Component {
     super(props);
     this.state = {};
   }
+
+  handleLogin() {
+    
+  }
+
   render() {
     return (
       <header>
