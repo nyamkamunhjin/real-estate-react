@@ -4,12 +4,11 @@ import axios from 'axios';
 import GridView from '../../components/GridView/GridView';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import Modal from '../../components/Modal/Modal';
-import Cookies from 'universal-cookie';
-
 import './Buy.css';
 // import data from '../../fakeData.json';
 // import mapStyles from '../../mapStyles';
-import AuthContext from '../../auth/AuthContext';
+import CookieContext from '../../context/cookie-context';
+
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -27,9 +26,8 @@ const options = {
 };
 
 export default function Buy() {
-  const authContext = useContext(AuthContext);
-  const cookie = new Cookies();
-
+  const { cookies } = useContext(CookieContext);
+  const token = cookies.get('token');
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
@@ -46,16 +44,15 @@ export default function Buy() {
     setSelected(info);
   };
   useEffect(() => {
-
     const fetchData = async () => {
-      console.log(cookie.get('token'));
+      console.log(token);
       const result = await axios(
         `${
           process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_LOCAL_URL
         }/api/properties`,
         {
           headers: {
-            'Authorization': `Bearer ${cookie.get('token')}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -64,7 +61,7 @@ export default function Buy() {
     };
 
     fetchData();
-  }, [authContext]);
+  }, []);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {

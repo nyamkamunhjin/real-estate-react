@@ -1,28 +1,36 @@
 import React, { useEffect, useContext } from 'react';
 import queryString from 'query-string';
-import AuthContext from '../../auth/AuthContext';
-import Cookies from 'universal-cookie';
+import CookieContext from '../../context/cookie-context';
+// import Cookies from 'universal-cookie';
 
-const Dashboard = ({ location }) => {
-  const authContext = useContext(AuthContext);
-  const cookies = new Cookies();
+// const cookies = new Cookies();
+
+const Auth = ({ location }) => {
+  const { cookies } = useContext(CookieContext);
   const query = queryString.parse(location.search);
+
   useEffect(() => {
     const setAuth = async () => {
-      // console.log(authContext);
-      if (query) {
-        // authContext.login(query.token, query.userId);
+      console.log(Object.keys(query).length === 0);
+      if (Object.keys(query).length !== 0) {
+        // set token cookie
         cookies.set('token', query.token, {
           path: '/',
-          expires: new Date(query.expires)
+          expires: new Date(query.expires),
+        });
+
+        // set userId cookie
+        cookies.set('userId', query.userId, {
+          path: '/',
+          expires: new Date(query.expires),
         });
       }
     };
 
     setAuth();
-  }, [authContext, location, cookies, query]);
+  }, [location, query, cookies]);
 
   return <div>Hello {cookies.get('token')}</div>;
 };
 
-export default Dashboard;
+export default Auth;
