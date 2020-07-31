@@ -6,11 +6,12 @@ import CookieContext from '../../context/cookie-context';
 // const cookies = new Cookies();
 
 const Auth = ({ location }) => {
-  const { cookies } = useContext(CookieContext);
+  const { cookies, logIn } = useContext(CookieContext);
   const query = queryString.parse(location.search);
 
   useEffect(() => {
     const setAuth = async () => {
+      console.log('cookie check: ', cookies.get('token'));
       console.log(Object.keys(query).length === 0);
       if (Object.keys(query).length !== 0) {
         // set token cookie
@@ -24,6 +25,8 @@ const Auth = ({ location }) => {
           path: '/',
           expires: new Date(query.expires),
         });
+        logIn();
+        
       }
     };
 

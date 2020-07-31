@@ -1,41 +1,46 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import './MainNavigation.css';
+import cookieContext from '../context/cookie-context';
 
-class MainNavigation extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const MainNavigation = ({ loggedIn }) => {
+  const { cookies, logOut } = useContext(cookieContext);
+  const GOOGLE_SIGNIN_URL = `${
+    process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_LOCAL_URL
+  }/auth/google`;
+  
 
-  handleLogin() {
-    
-  }
-
-  render() {
-    return (
-      <header>
-        <nav className="main-nav">
-          <ul>
+  return (
+    <header>
+      <nav className="main-nav">
+        <ul>
+          <li>
+            <NavLink to="/rent">Rent</NavLink>
+          </li>
+          <li>
+            {loggedIn && <NavLink to="/add">Add</NavLink>}
+          </li>
+        </ul>
+        <ul>
+          {!loggedIn ? (
             <li>
-              <NavLink to="/rent">Rent</NavLink>
+              <a href={GOOGLE_SIGNIN_URL}>Sign in g+</a>
             </li>
+          ) : (
             <li>
-              <NavLink to="/add">Add</NavLink>
+              <button
+                onClick={() => {
+                  logOut(cookies);
+                }}
+              >
+                Log out
+              </button>
             </li>
-          </ul>
-          <ul>
-            <li>
-              <a href={`${process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_LOCAL_URL}/auth/google`}>Sign in g+</a>
-           </li>
-            <li>
-              <a href="">Log Out</a>
-           </li>
-          </ul>
-        </nav>
-      </header>
-    );
-  }
-}
+          )}
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
 export default MainNavigation;

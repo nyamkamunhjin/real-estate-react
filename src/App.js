@@ -12,8 +12,20 @@ import Cookies from 'universal-cookie';
 class App extends Component {
   constructor() {
     super();
+    this.state = {
+      loggedIn: false,
+    };
   }
 
+  logIn = () => {
+    this.setState({ loggedIn: true });
+  };
+
+  logOut = (cookies) => {
+    this.setState({ loggedIn: false });
+    cookies.remove('token');
+    cookies.remove('userId');
+  };
   render() {
     const cookies = new Cookies();
     return (
@@ -21,11 +33,13 @@ class App extends Component {
         <CookieContext.Provider
           value={{
             cookies,
+            logIn: this.logIn,
+            logOut: this.logOut,
           }}
         >
-          <MainNavigation />
+          <MainNavigation loggedIn={this.state.loggedIn} />
           <div className="App">
-            {cookies.get('token') ? (
+            {this.state.loggedIn ? (
               <Redirect from="/" to="/rent" exact />
             ) : (
               <Redirect from="/" to="/auth" exact />
