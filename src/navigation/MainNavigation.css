@@ -19,7 +19,7 @@
   list-style: none;
   /* padding: 0; */
   margin-left: 1em;
-  /* align-items: center; */
+  place-items: center;
 }
 
 .main-nav li {
@@ -45,7 +45,10 @@
   margin-left: auto;
 }
 
-.main-nav a, button {
+.main-nav a, .main-nav button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
   text-decoration: none;
   color: white;
   transition: 0.3s;

@@ -45,7 +45,7 @@ export default function Buy() {
   };
   useEffect(() => {
     const fetchData = async () => {
-      console.log(token);
+      // console.log(token);
       const result = await axios(
         `${
           process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_LOCAL_URL
@@ -94,7 +94,7 @@ export default function Buy() {
               }}
               onClick={() => {
                 setSelected(prop);
-                console.log(selected);
+                // console.log(selected);
               }}
             />
           ))}

@@ -69,7 +69,7 @@ export default function Add() {
       },
       desc: descElRef.current.value,
     };
-    console.log(data);
+    // console.log(data);
     await axios
       .post(
         `${
@@ -84,11 +84,11 @@ export default function Add() {
       )
       .then((res) => {
         alert('successful');
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         alert('error');
-        console.log(err);
+        // console.log(err);
       });
 
     // setSelected(result.data[0]);

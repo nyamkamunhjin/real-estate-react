@@ -12,8 +12,8 @@ const Auth = ({ location }) => {
 
   useEffect(() => {
     const setAuth = async () => {
-      console.log('cookie check: ', cookies.get('token'));
-      console.log(Object.keys(query).length === 0);
+      // console.log('cookie check: ', cookies.get('token'));
+      // console.log(Object.keys(query).length === 0);
       if (Object.keys(query).length !== 0) {
         // set token cookie
         cookies.set('token', query.token, {

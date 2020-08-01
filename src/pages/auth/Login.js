@@ -32,7 +32,7 @@ const Login = ({}) => {
         const { url } = res.data;
         // console.log(url);
         setRedirectUrl(url);
-        console.log(redirectUrl);
+        // console.log(redirectUrl);
       })
       .catch((err) => {
         console.log(err);
