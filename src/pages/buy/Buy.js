@@ -61,7 +61,7 @@ export default function Buy() {
     };
 
     fetchData();
-  }, []);
+  }, [token]);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {

@@ -31,9 +31,21 @@
 
 }
 
+.main-nav-auth {
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+  /* padding: 0; */
+  margin-left: 1em;
+  /* align-items: center; */
+  
+}
 
+.main-nav li:last-child {
+  margin-left: auto;
+}
 
-a {
+.main-nav a, button {
   text-decoration: none;
   color: white;
   transition: 0.3s;

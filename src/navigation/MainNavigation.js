@@ -8,7 +8,6 @@ const MainNavigation = ({ loggedIn }) => {
   const GOOGLE_SIGNIN_URL = `${
     process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_LOCAL_URL
   }/auth/google`;
-  
 
   return (
     <header>
@@ -17,18 +16,15 @@ const MainNavigation = ({ loggedIn }) => {
           <li>
             <NavLink to="/rent">Rent</NavLink>
           </li>
-          <li>
-            {loggedIn && <NavLink to="/add">Add</NavLink>}
-          </li>
-        </ul>
-        <ul>
+          <li>{loggedIn && <NavLink to="/add">Add</NavLink>}</li>
+
           {!loggedIn ? (
             <li>
-              <a href={GOOGLE_SIGNIN_URL}>Sign in g+</a>
+              <NavLink to='/auth'>Login</NavLink>
             </li>
           ) : (
             <li>
-              <button
+              <button className="btn-cancel"
                 onClick={() => {
                   logOut(cookies);
                 }}

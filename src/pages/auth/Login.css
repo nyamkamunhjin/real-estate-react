@@ -1,0 +1,26 @@
+.login-form {
+  width: 500px;
+  margin: 10% calc((100% - 500px) / 2);
+  background-color: thistle;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.form-handler {
+  display: flex;
+  /* padding: .1em; */
+  place-items: center;
+  flex-direction: column;
+}
+
+.form-handler button {
+  width: 250px;
+  margin: 0.2em calc((100% - 250px)/ 2);
+}
+
+.form-handler a {
+  text-decoration: none;
+  color: white;
+}
+

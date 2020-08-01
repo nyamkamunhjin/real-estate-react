@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import axios from 'axios';
 import './Add.css';
-
+import CookieContext from '../../context/cookie-context';
 // import mapStyles from '../../mapStyles';
 
 const libraries = ['places'];
@@ -21,6 +21,9 @@ const options = {
 };
 
 export default function Add() {
+  const { cookies } = useContext(CookieContext);
+  const token = cookies.get('token');
+
   const addressElRef = useRef('');
   const latitudeElRef = useRef(0);
   const longitudeElRef = useRef(0);
@@ -69,8 +72,15 @@ export default function Add() {
     console.log(data);
     await axios
       .post(
-        `${process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_LOCAL_URL}/api/add`,
-        data
+        `${
+          process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_LOCAL_URL
+        }/api/add`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       )
       .then((res) => {
         alert('successful');

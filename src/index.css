@@ -39,6 +39,7 @@ code {
 
 .form-actions button,
 .btn {
+  transition: .3s;
   background: #6200ee;
   font: inherit;
   border: 1px solid #6200ee;

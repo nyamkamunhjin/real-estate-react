@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import queryString from 'query-string';
 import CookieContext from '../../context/cookie-context';
+import Login from './Login';
 // import Cookies from 'universal-cookie';
 
 // const cookies = new Cookies();
@@ -31,9 +32,9 @@ const Auth = ({ location }) => {
     };
 
     setAuth();
-  }, [location, query, cookies]);
+  }, [location, query, cookies, logIn]);
 
-  return <div>Hello {cookies.get('token')}</div>;
+  return <div><Login /></div>;
 };
 
 export default Auth;
