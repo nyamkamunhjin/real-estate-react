@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import MainNavigation from './navigation/MainNavigation';
 import { BrowserRouter, Redirect, Switch, Route } from 'react-router-dom';
-import Buy from './pages/buy/Buy.js';
+import Rent from './pages/rent/Rent';
 import Add from './pages/add/Add.js';
 import Auth from './pages/auth/Auth';
+import Register from './pages/auth/Register';
+
 import CookieContext from './context/cookie-context';
 
 import Cookies from 'universal-cookie';
@@ -39,15 +41,15 @@ class App extends Component {
         >
           <MainNavigation loggedIn={this.state.loggedIn} />
           <div className="App">
-            {this.state.loggedIn ? (
-              <Redirect from="/" to="/rent" exact />
-            ) : (
-              <Redirect from="/" to="/auth" exact />
-            )}
+            {this.state.loggedIn && <Redirect to="/rent" exact />}
+            {/* {!this.state.loggedIn && <Redirect to="/auth" exact />} */}
+
+            {/* <Redirect from="/" to="/register" exact /> */}
             <Switch>
-              <Route path="/rent" component={Buy} />
+              <Route path="/rent" component={Rent} />
               <Route path="/add" component={Add} />
               <Route path="/auth" component={Auth} />
+              <Route path="/register" component={Register} />
             </Switch>
           </div>
         </CookieContext.Provider>

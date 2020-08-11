@@ -14,7 +14,7 @@
   flex-direction: column;
 }
 
-.form-handler button {
+.form-handler .btn {
   width: 250px;
   margin: 0.2em calc((100% - 250px)/ 2);
 }

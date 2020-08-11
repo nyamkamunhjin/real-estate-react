@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './Login.css';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 
 /**
  * @author
@@ -58,9 +58,9 @@ const Login = ({}) => {
             <button className="btn" type="submit" value="Login">
               Login
             </button>
-            <button className="btn" onClick={null} formNoValidate>
+            <NavLink className="btn" to='/register' formNoValidate>
               Register
-            </button>
+            </NavLink>
             <button className="btn" formNoValidate>
               <a href={GOOGLE_SIGNIN_URL}>Sign in with Google</a>
             </button>

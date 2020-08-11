@@ -4,7 +4,7 @@ import axios from 'axios';
 import GridView from '../../components/GridView/GridView';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import Modal from '../../components/Modal/Modal';
-import './Buy.css';
+import './Rent.css';
 // import data from '../../fakeData.json';
 // import mapStyles from '../../mapStyles';
 import CookieContext from '../../context/cookie-context';
@@ -103,7 +103,7 @@ export default function Buy() {
       {properties.length !== 0 ? (
         <GridView info={properties} handleSelected={handleSelected} />
       ) : (
-        <h2>Loading...</h2>
+        !token ? <h2>Please login to see.</h2> : <h2>Loading...</h2>
       )}
       {selected ? (
         <React.Fragment>

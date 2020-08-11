@@ -14,27 +14,32 @@ const Auth = ({ location }) => {
     const setAuth = async () => {
       // console.log('cookie check: ', cookies.get('token'));
       // console.log(Object.keys(query).length === 0);
-      if (Object.keys(query).length !== 0) {
-        // set token cookie
-        cookies.set('token', query.token, {
-          path: '/',
-          expires: new Date(query.expires),
-        });
 
-        // set userId cookie
-        cookies.set('userId', query.userId, {
-          path: '/',
-          expires: new Date(query.expires),
-        });
-        logIn();
-        
-      }
+      // set token cookie
+      cookies.set('token', query.token, {
+        path: '/',
+        expires: new Date(query.expires),
+      });
+
+      // set userId cookie
+      cookies.set('userId', query.userId, {
+        path: '/',
+        expires: new Date(query.expires),
+      });
+      logIn();
     };
 
-    setAuth();
+    if (Object.keys(query).length !== 0) {
+      setAuth();
+    }
+    
   }, [location, query, cookies, logIn]);
 
-  return <div><Login /></div>;
+  return (
+    <div>
+      <Login />
+    </div>
+  );
 };
 
 export default Auth;

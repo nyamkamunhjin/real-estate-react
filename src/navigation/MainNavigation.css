@@ -8,16 +8,19 @@
 }
 
 .main-nav {
+  display: flex;
   background-color: #5101d1;
-  padding: 0.5em;
+  /* padding: 0.5em; */
   box-shadow: 0 4px 2px -2px gray;
+  height: 50px;
+  place-items: center;
 }
 
 .main-nav ul {
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   list-style: none;
-  /* padding: 0; */
   margin-left: 1em;
   place-items: center;
 }
@@ -25,7 +28,7 @@
 .main-nav li {
   margin: 0 0.5rem;
   /* height: 50px; */
-  padding: 0.3em;
+  /* padding: 0.3em; */
   /* background-color: blueviolet; */
   border-radius: 5px;
 
