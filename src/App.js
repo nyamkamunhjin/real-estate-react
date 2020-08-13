@@ -16,6 +16,7 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
+      cookies: new Cookies(),
     };
   }
 
@@ -26,23 +27,28 @@ class App extends Component {
   logOut = (cookies) => {
     this.setState({ loggedIn: false });
     cookies.remove('token');
-    cookies.remove('userId');
+    // cookies.remove('userId');
   };
+
+  componentDidMount() {
+    const token = this.state.cookies.get('token');
+    if (token) this.setState({ loggedIn: true });
+  }
+
   render() {
-    const cookies = new Cookies();
     return (
       <BrowserRouter>
         <CookieContext.Provider
           value={{
-            cookies,
+            cookies: this.state.cookies,
             logIn: this.logIn,
             logOut: this.logOut,
           }}
         >
           <MainNavigation loggedIn={this.state.loggedIn} />
           <div className="App">
-            {this.state.loggedIn && <Redirect to="/rent" exact />}
-            {/* {!this.state.loggedIn && <Redirect to="/auth" exact />} */}
+            {this.state.loggedIn && <Redirect to="/rent" />}
+            {/* {!this.state.loggedIn && <Redirect to="/auth" />} */}
 
             {/* <Redirect from="/" to="/register" exact /> */}
             <Switch>

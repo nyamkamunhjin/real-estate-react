@@ -9,7 +9,6 @@ import './Rent.css';
 // import mapStyles from '../../mapStyles';
 import CookieContext from '../../context/cookie-context';
 
-
 const libraries = ['places'];
 const mapContainerStyle = {
   width: '100%',
@@ -35,6 +34,17 @@ export default function Buy() {
 
   const [properties, setProperties] = useState([]);
   const [selected, setSelected] = useState(null);
+  const [pos, setPos] = useState(center);
+  const mapRef = React.useRef();
+
+  function handleLoad(map) {
+    mapRef.current = map;
+  }
+
+  const handlePos = () => {
+    
+    // console.log(mapRef.current.getCenter().toJSON());
+  };
 
   const exitSelected = () => {
     setSelected(null);
@@ -63,11 +73,6 @@ export default function Buy() {
     fetchData();
   }, [token]);
 
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
-    mapRef.current = map;
-  }, []);
-
   if (loadError) return 'Error loading maps';
   if (!isLoaded) return 'Loading maps';
 
@@ -76,11 +81,13 @@ export default function Buy() {
       <div className="map">
         <h2>Maps</h2>
         <GoogleMap
+          onload={handleLoad}
           mapContainerStyle={mapContainerStyle}
           zoom={10}
           center={center}
           options={options}
-          onload={onMapLoad}
+          onCenterChanged={handlePos}
+          clickableIcons={false}
         >
           {properties.map((prop) => (
             <Marker
@@ -102,8 +109,10 @@ export default function Buy() {
       </div>
       {properties.length !== 0 ? (
         <GridView info={properties} handleSelected={handleSelected} />
+      ) : !token ? (
+        <h2>Please login to see.</h2>
       ) : (
-        !token ? <h2>Please login to see.</h2> : <h2>Loading...</h2>
+        <h2>Loading...</h2>
       )}
       {selected ? (
         <React.Fragment>

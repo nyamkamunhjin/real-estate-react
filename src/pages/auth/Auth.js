@@ -22,10 +22,10 @@ const Auth = ({ location }) => {
       });
 
       // set userId cookie
-      cookies.set('userId', query.userId, {
-        path: '/',
-        expires: new Date(query.expires),
-      });
+      // cookies.set('userId', query.userId, {
+      //   path: '/',
+      //   expires: new Date(query.expires),
+      // });
       logIn();
     };
 
